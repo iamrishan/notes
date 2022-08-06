@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Notes{% endblock %} {% block content
+%}
+<h1 align="center" class="mb-4">Notes</h1>
+{% for note in user.notes %}
+<div class="alert alert-dark fade show" role="alert">
+  {{ note.data }}
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    onClick="deleteNote({{ note.id }})"
+  ></button>
+</div>
+{% endfor %}
+
+<form method="POST">
+  <textarea
+    maxlength="1000"
+    rows="1"
+    name="note"
+    id="note"
+    class="form-control mb-5 center"
+    placeholder="Type something..."
+  ></textarea>
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
+</form>
+{% endblock %}
